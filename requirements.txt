@@ -6,3 +6,4 @@ langchain
 langchain-ollama
 scikit-learn
 textstat
+nltk
