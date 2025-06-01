@@ -1,5 +1,8 @@
 smolagents
+smolagents[litellm]
 ipykernel
 music21
 langchain
 langchain-ollama
+scikit-learn
+textstat
