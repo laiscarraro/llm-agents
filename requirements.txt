@@ -1,6 +1,9 @@
-langchain
-transformers
-torch
-streamlit
+smolagents
+smolagents[litellm]
 ipykernel
-langchain_community
+music21
+langchain
+langchain-ollama
+scikit-learn
+textstat
+nltk
