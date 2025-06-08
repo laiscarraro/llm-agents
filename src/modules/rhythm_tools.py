@@ -10,27 +10,17 @@ from typing import Dict, List
 
 
 @tool
-def get_syllable_dict_tool() -> Dict[str, str]:
-    """
-    Returns a static dictionary that maps words to its syllables.
-    """
-    return get_syllable_dict()
-
-
-@tool
-def divide_syllables(verse: str, syllable_dict: Dict[str, str]) -> Dict[str, int]:
+def divide_syllables(verse: str) -> Dict[str, int]:
     """
     Divides a verse into syllables.
+    Returns a dictionary with the verse text divided into syllables and syllable count.
 
     Args:
         verse: A verse of a song.
-        syllable_dict: the dictionary that maps words to its syllables.
-    
-    Returns:
-        A dictionary with the verse text divided into syllables and syllable count.
     """
     words = get_words(verse)
     keywords = get_keywords(verse)
+    syllable_dict = get_syllable_dict()
     phonemes = [syllable_dict.get(word, '') for word in words]
     syllables = ''
     
@@ -56,12 +46,10 @@ def divide_syllables(verse: str, syllable_dict: Dict[str, str]) -> Dict[str, int
 def get_possible_time_signatures(verses_syllables: List[Dict[str, str]]) -> List[str]:
     """
     Determines the possible time signatures for the song depending on the number of syllables in the verse list.
+    Returns a list of strings that represent the possible time signatures that can be chosen to these particular lyrics.
 
     Args:
-        verses_syllables: a list of dictionaries that contain the syllable division of each verse (e.g.: [{'text': 'im a verse', 'syllables': 3}, {'text': 'im a-no-ther verse', 'syllables': 5}])
-    
-    Returns:
-        A list of strings that represent the possible time signatures that can be chosen to these particular lyrics.
+        verses_syllables: a list of dictionaries that contain the syllable division of each verse
     """
     mean_syllables = get_mean_syllables(verses_syllables)
     signatures = {
@@ -85,13 +73,11 @@ def get_possible_time_signatures(verses_syllables: List[Dict[str, str]]) -> List
 def get_number_of_compasses(verses_syllables: List[Dict[str, str]], time_signature: str) -> int:
     """
     Given the list of verse syllables and a chosen time signature, this function calculates how many compasses are going to be created.
+    Returns an integer that represents the number of compasses to be created.
 
     Args:
-        verses_syllables: a list of dictionaries that contain the syllable division of each verse (e.g.: [{'text': 'im a verse', 'syllables': 3}, {'text': 'im a-no-ther verse', 'syllables': 5}])
+        verses_syllables: a list of dictionaries that contain the syllable division of each verse
         time_signature: a string in the format 'digit/digit' that represents the chosen time signature
-    
-    Returns:
-        An integer that represents the number of compasses to be created.
     """
     number_of_notes, type_of_notes = time_signature.split('/')
     note_type = int(int(type_of_notes)/4)

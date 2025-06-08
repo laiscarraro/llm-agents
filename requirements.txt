@@ -7,3 +7,4 @@ langchain-ollama
 scikit-learn
 textstat
 nltk
+psutil

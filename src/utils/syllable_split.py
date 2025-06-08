@@ -1,5 +1,5 @@
 def get_syllable_dict():
-    dict_filename = 'utils/cmudict.rep'
+    dict_filename = 'src/utils/cmudict.rep'
     syllable_dict = {}
 
     with open(dict_filename) as f:
